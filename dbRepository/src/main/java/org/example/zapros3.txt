@@ -1,0 +1,11 @@
+EXPLAIN (FORMAT json, ANALYZE) SELECT c.user_id, mtt._type, mtt.tag, COUNT(*) AS amount " +
+                        "FROM commentary c " +
+                        "JOIN manga_type_tag mtt ON c.manga_id = mtt.manga_id " +
+                        "WHERE c.user_id IN ( " +
+                        "SELECT user_id " +
+                        "FROM commentary " +
+                        "GROUP BY user_id " +
+                        "HAVING COUNT(DISTINCT manga_id) = 1 " +
+                        ") " +
+                        "GROUP BY c.user_id, mtt._type, mtt.tag " +
+                        "HAVING COUNT(DISTINCT mtt._type) = 1 AND COUNT(DISTINCT mtt.tag) = 1

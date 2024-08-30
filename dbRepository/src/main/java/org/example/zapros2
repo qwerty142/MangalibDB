@@ -1,0 +1,5 @@
+EXPLAIN (FORMAT json, ANALYZE) SELECT u.*, m.* " +
+                        "FROM mangareader u " +
+                        "JOIN recommendation r ON u.user_id = r.user_id " +
+                        "JOIN manga m ON r.manga_id = m.manga_id " +
+                        "WHERE u.user_id BETWEEN 10500 AND 200000

@@ -1,0 +1,4 @@
+FROM openjdk:17-jdk-alpine
+COPY out/artifacts/dbRepository_jar4/dbRepository.jar appSQL_8.jar
+COPY dbRepository/src/main/java/org/example/sql_querries_result /sql_querries_result
+CMD ["java","-jar","/appSQL_8.jar"]

@@ -1,0 +1,6 @@
+EXPLAIN (FORMAT json, ANALYZE) SELECT m.*, a.*, c.* " +
+                        "FROM manga m " +
+                        "JOIN author a ON m.author_id = a.author_id " +
+                        "JOIN commentary c ON m.manga_id = c.manga_id " +
+                        "ORDER BY RANDOM() " +
+                        "LIMIT 10
